@@ -1,12 +1,285 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CCF 四川大学学生分会</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      color: #1f2933;
+      background: #f7f8fa;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      color: #7a1f1f;
+    }
+
+    .nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: #7a1f1f;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7a1f1f, #1f3a5f);
+      color: white;
+      padding: 86px 24px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 42px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      margin: 20px auto 0;
+      max-width: 760px;
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .hero .buttons {
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: #ffffff;
+      color: #7a1f1f;
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    section {
+      margin-bottom: 58px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 18px;
+      color: #111827;
+      border-left: 5px solid #7a1f1f;
+      padding-left: 12px;
+    }
+
+    .intro {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #7a1f1f;
+      font-size: 19px;
+    }
+
+    .news-list {
+      background: #ffffff;
+      padding: 24px 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .news-item {
+      padding: 14px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .date {
+      color: #6b7280;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 30px 24px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        display: block;
+      }
+
+      .nav-links {
+        margin-top: 10px;
+      }
+
+      .nav a {
+        margin-left: 0;
+        margin-right: 14px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>CCF 四川大学学生分会</h1>
-  <p>连接 CCF 优质资源，服务川大学生成长。</p>
+  <header>
+    <div class="nav">
+      <div class="logo">CCF 四川大学学生分会</div>
+      <div class="nav-links">
+        <a href="#about">关于分会</a>
+        <a href="#activities">活动方向</a>
+        <a href="#news">最新动态</a>
+        <a href="#join">加入我们</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>CCF 四川大学学生分会</h1>
+    <p>连接 CCF 优质资源，服务川大学生成长，推动学术交流、会员服务与学生分会建设持续发展。</p>
+    <div class="buttons">
+      <a class="button primary" href="#about">了解分会</a>
+      <a class="button secondary" href="#join">加入我们</a>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <h2>关于分会</h2>
+      <div class="intro">
+        <p>
+          CCF 四川大学学生分会面向四川大学计算机相关专业学生开展学术交流、会员服务、活动组织与跨校合作等工作，致力于推动中国计算机学会（CCF）优质资源进入校园，服务学生专业成长、科研训练与职业发展。
+        </p>
+        <p>
+          分会坚持“学会赋能、学院指导、学生主导”的建设思路，围绕学生成长需求组织高质量活动，推动学生在学术交流、科研实践、竞赛认证、组织协作与跨校交流中获得持续成长。
+        </p>
+      </div>
+    </section>
+
+    <section id="activities">
+      <h2>活动方向</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>学术交流</h3>
+          <p>邀请学术界与产业界嘉宾开展讲座、报告与交流，帮助学生了解计算机领域前沿问题与发展趋势。</p>
+        </div>
+        <div class="card">
+          <h3>学生领航</h3>
+          <p>围绕科研入门、学习规划、升学就业、竞赛认证等主题，组织面向学生会员的成长支持活动。</p>
+        </div>
+        <div class="card">
+          <h3>校际联建</h3>
+          <p>与兄弟高校学生分会开展交流互访，分享活动经验、组织机制与学生分会建设路径。</p>
+        </div>
+        <div class="card">
+          <h3>会员服务</h3>
+          <p>推动 CCF 会员资源、会议资源、认证资源与校园学生需求对接，提升学生会员的参与感与获得感。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2>最新动态</h2>
+      <div class="news-list">
+        <div class="news-item">
+          <span class="date">2026-05-24</span>
+          CCF 四川大学学生分会与西北工业大学学生分会开展联建交流活动
+        </div>
+        <div class="news-item">
+          <span class="date">2026-XX-XX</span>
+          CCF 走进川大：从 DeepSeek 看大模型技术演进
+        </div>
+        <div class="news-item">
+          <span class="date">2026-XX-XX</span>
+          CCF 学生领航计划系列活动持续开展
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <h2>加入我们</h2>
+      <div class="intro">
+        <p>
+          欢迎四川大学计算机相关专业学生关注并参与 CCF 四川大学学生分会活动。你可以通过参与讲座、加入学生会员、参与志愿服务、申请执委会工作等方式加入分会建设。
+        </p>
+        <p>
+          后续本页面将更新分会交流群、活动报名方式、公众号入口与联系方式。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 CCF 四川大学学生分会｜Powered by GitHub Pages
+  </footer>
 </body>
 </html>
