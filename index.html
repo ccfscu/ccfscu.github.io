@@ -3,283 +3,743 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CCF 四川大学学生分会官方网站。中国计算机学会（CCF）四川大学学生分会面向计算机相关专业学生开展学术交流、竞赛认证、企业参访与朋辈领航等活动。" />
+  <meta property="og:title" content="CCF 四川大学学生分会" />
+  <meta property="og:description" content="连接 CCF 优质资源，服务川大学生成长。" />
   <title>CCF 四川大学学生分会</title>
   <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       color: #1f2933;
       background: #f7f8fa;
       line-height: 1.7;
     }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
+    /* ── Nav ── */
     header {
-      background: #ffffff;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
       z-index: 100;
     }
+    .nav { max-width: 1120px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 36px; }
+    .nav-logo span { font-weight: 700; font-size: 16px; color: #7a1f1f; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 14px; color: #374151; transition: color 0.2s; }
+    .nav-links a:hover { color: #7a1f1f; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 1px; transition: 0.3s; }
 
-    .nav {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 18px;
-      color: #7a1f1f;
-    }
-
-    .nav a {
-      margin-left: 22px;
-      text-decoration: none;
-      color: #374151;
-      font-size: 14px;
-    }
-
-    .nav a:hover {
-      color: #7a1f1f;
-    }
-
+    /* ── Hero ── */
     .hero {
-      background: linear-gradient(135deg, #7a1f1f, #1f3a5f);
+      background: linear-gradient(135deg, #7a1f1f 0%, #5a2d6b 40%, #1f3a5f 100%);
       color: white;
-      padding: 86px 24px;
+      padding: 100px 24px 90px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 42px;
-      letter-spacing: 1px;
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
     }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero h1 { font-size: 44px; font-weight: 800; letter-spacing: 2px; margin-bottom: 16px; }
+    .hero .subtitle { font-size: 20px; opacity: 0.92; margin-bottom: 36px; line-height: 1.6; }
+    .hero .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 11px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; transition: all 0.25s; cursor: pointer; }
+    .btn-primary { background: #ffffff; color: #7a1f1f; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+    .btn-secondary { border: 1.5px solid rgba(255,255,255,0.75); color: #ffffff; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
-    .hero p {
-      margin: 20px auto 0;
-      max-width: 760px;
-      font-size: 20px;
-      opacity: 0.95;
+    /* ── Sections ── */
+    section { padding: 72px 24px; }
+    section:nth-child(even) { background: #ffffff; }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .section-title {
+      font-size: 28px; font-weight: 700; color: #111827; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 12px;
     }
+    .section-title::before { content: ''; display: block; width: 4px; height: 28px; background: #7a1f1f; border-radius: 2px; }
+    .section-desc { color: #6b7280; font-size: 15px; margin-bottom: 40px; }
 
-    .hero .buttons {
-      margin-top: 34px;
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+    .about-text p { margin-bottom: 14px; color: #4b5563; font-size: 15px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+    .stat-card {
+      background: linear-gradient(135deg, #fef2f2 0%, #eff6ff 100%);
+      border: 1px solid #f3e8e8;
+      border-radius: 12px; padding: 22px; text-align: center;
     }
+    .stat-card .num { font-size: 32px; font-weight: 800; color: #7a1f1f; }
+    .stat-card .label { font-size: 13px; color: #6b7280; margin-top: 4px; }
 
-    .button {
-      display: inline-block;
-      margin: 0 8px;
-      padding: 10px 22px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
+    .honors { }
+    .honors h3 { font-size: 20px; color: #111827; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .honor-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .honor-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: #f9fafb; border-radius: 10px; padding: 16px 18px;
+      border: 1px solid #f0f0f0; transition: box-shadow 0.25s;
     }
+    .honor-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .honor-icon { font-size: 24px; flex-shrink: 0; }
+    .honor-info .honor-name { font-weight: 600; font-size: 15px; color: #1f2937; }
+    .honor-info .honor-year { font-size: 13px; color: #9ca3af; margin-top: 2px; }
 
-    .button.primary {
-      background: #ffffff;
-      color: #7a1f1f;
-    }
-
-    .button.secondary {
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      color: #ffffff;
-    }
-
-    main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 56px 24px;
-    }
-
-    section {
-      margin-bottom: 58px;
-    }
-
-    h2 {
-      font-size: 26px;
-      margin-bottom: 18px;
-      color: #111827;
-      border-left: 5px solid #7a1f1f;
-      padding-left: 12px;
-    }
-
-    .intro {
-      background: #ffffff;
-      padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
+    /* ── Activities ── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
     .card {
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      background: #ffffff; border: 1px solid #f0f0f0; border-radius: 14px;
+      padding: 28px 22px; transition: transform 0.25s, box-shadow 0.25s;
     }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .card-icon { font-size: 36px; margin-bottom: 14px; }
+    .card h3 { font-size: 18px; color: #7a1f1f; margin-bottom: 10px; }
+    .card p { font-size: 14px; color: #6b7280; line-height: 1.65; }
 
-    .card h3 {
-      margin-top: 0;
-      color: #7a1f1f;
-      font-size: 19px;
+    /* ── Timeline (events + historical team) ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, #7a1f1f, #d1d5db);
     }
-
-    .news-list {
-      background: #ffffff;
-      padding: 24px 28px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    .tl-year { margin-bottom: 24px; }
+    .tl-year.current .tl-year-title { color: #7a1f1f; }
+    .tl-year-title {
+      font-size: 20px; font-weight: 700; color: #374151; margin-bottom: 12px;
+      position: relative; cursor: default; display: flex; align-items: center; gap: 8px;
     }
-
-    .news-item {
-      padding: 14px 0;
-      border-bottom: 1px solid #e5e7eb;
+    .tl-year-title::before {
+      content: ''; position: absolute; left: -26px; top: 8px;
+      width: 10px; height: 10px; background: #7a1f1f; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 2px #7a1f1f;
     }
-
-    .news-item:last-child {
-      border-bottom: none;
+    .tl-items { display: flex; flex-direction: column; gap: 8px; }
+    .tl-item {
+      display: flex; align-items: baseline; gap: 16px;
+      padding: 10px 14px; background: #f9fafb; border-radius: 8px;
+      border-left: 3px solid #e5e7eb; font-size: 14px; transition: border-color 0.2s, background 0.2s;
     }
-
-    .date {
-      color: #6b7280;
-      font-size: 14px;
-      margin-right: 10px;
+    .tl-item:hover { border-left-color: #7a1f1f; background: #fef2f2; }
+    .tl-date { color: #7a1f1f; font-weight: 600; white-space: nowrap; font-size: 13px; min-width: 72px; }
+    .tl-title { color: #1f2937; font-weight: 500; }
+    .tl-summary { color: #9ca3af; font-size: 13px; margin-left: 4px; }
+    .tl-toggle { margin-top: 6px; }
+    .tl-toggle-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: #6b7280; cursor: pointer; background: none; border: none;
+      padding: 6px 0; transition: color 0.2s;
     }
+    .tl-toggle-btn:hover { color: #7a1f1f; }
+    .tl-toggle-btn .arrow { transition: transform 0.25s; display: inline-block; }
+    .tl-toggle-btn.open .arrow { transform: rotate(90deg); }
+    .tl-old { display: none; }
+    .tl-old.show { display: block; }
 
+    /* ── Team ── */
+    .team-section { margin-bottom: 56px; }
+    .team-section h3 { font-size: 20px; color: #111827; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+    .member-card { text-align: center; }
+    .member-avatar {
+      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 10px;
+      background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: #9ca3af; overflow: hidden;
+    }
+    .member-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .member-name { font-weight: 600; font-size: 15px; color: #1f2937; }
+    .member-role { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+
+    .timeline-team .tl-item { padding: 14px 16px; }
+    .tl-team-names { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+    .tl-team-names .role-group { font-size: 14px; }
+    .tl-team-names .role-label { color: #6b7280; margin-right: 4px; }
+    .tl-team-names .role-names { color: #1f2937; font-weight: 500; }
+
+    /* ── Join ── */
+    .join-content { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .join-card {
+      background: linear-gradient(135deg, #fef2f2, #eff6ff);
+      border-radius: 14px; padding: 28px;
+      display: flex; align-items: center; gap: 18px;
+    }
+    .join-card .join-icon { font-size: 40px; }
+    .join-card h3 { font-size: 18px; color: #1f2937; margin-bottom: 6px; }
+    .join-card .join-detail { font-size: 22px; font-weight: 700; color: #7a1f1f; letter-spacing: 1px; }
+    .join-card .join-note { font-size: 13px; color: #6b7280; margin-top: 4px; }
+    .join-card.recruit { background: #f0fdf4; }
+    .join-card.recruit .join-detail { color: #166534; }
+    .join-card.recruit p { font-size: 14px; color: #4b5563; line-height: 1.7; }
+
+    /* ── Footer ── */
     footer {
-      background: #111827;
-      color: #d1d5db;
-      text-align: center;
-      padding: 30px 24px;
-      font-size: 14px;
+      background: #111827; color: #d1d5db; padding: 40px 24px 26px; text-align: center; font-size: 14px;
     }
+    footer .footer-inner { max-width: 1120px; margin: 0 auto; }
+    footer .footer-org { font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 6px; }
+    footer .footer-affil { color: #9ca3af; margin-bottom: 16px; }
+    footer .footer-text { color: #6b7280; font-size: 13px; }
+    footer .footer-text a { color: #9ca3af; text-decoration: underline; }
+    footer .footer-text a:hover { color: #fff; }
 
-    @media (max-width: 720px) {
-      .nav {
-        display: block;
-      }
-
-      .nav-links {
-        margin-top: 10px;
-      }
-
-      .nav a {
-        margin-left: 0;
-        margin-right: 14px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 16px 24px; border-bottom: 1px solid #e5e7eb; gap: 14px; }
+      .nav-links.show { display: flex; }
+      .hamburger { display: flex; }
+      .hero h1 { font-size: 30px; }
+      .hero .subtitle { font-size: 17px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .join-content { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .tl-date { min-width: 56px; font-size: 12px; }
+      .tl-summary { display: none; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 48px 16px; }
+      .section-title { font-size: 22px; }
+      .hero { padding: 70px 16px; }
+      .hero h1 { font-size: 26px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat-card .num { font-size: 24px; }
+      .stat-card { padding: 14px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- ==================== Nav ==================== -->
   <header>
     <div class="nav">
-      <div class="logo">CCF 四川大学学生分会</div>
-      <div class="nav-links">
+      <a href="#" class="nav-logo">
+        <img src="images/ccf-logo.png" alt="CCF Logo" />
+        <span>CCF 川大学生分会</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
         <a href="#about">关于分会</a>
         <a href="#activities">活动方向</a>
-        <a href="#news">最新动态</a>
+        <a href="#events">活动开展</a>
+        <a href="#team">执委团队</a>
         <a href="#join">加入我们</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <h1>CCF 四川大学学生分会</h1>
-    <p>连接 CCF 优质资源，服务川大学生成长，推动学术交流、会员服务与学生分会建设持续发展。</p>
-    <div class="buttons">
-      <a class="button primary" href="#about">了解分会</a>
-      <a class="button secondary" href="#join">加入我们</a>
+  <!-- ==================== Hero ==================== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>CCF 四川大学学生分会</h1>
+      <p class="subtitle">连接 CCF 优质资源，服务川大学生成长<br />推动学术交流、竞赛认证、实践参访与朋辈领航持续发展</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#about">了解分会</a>
+        <a class="btn btn-secondary" href="#join">加入我们</a>
+      </div>
     </div>
   </section>
 
-  <main>
-    <section id="about">
-      <h2>关于分会</h2>
-      <div class="intro">
-        <p>
-          CCF 四川大学学生分会面向四川大学计算机相关专业学生开展学术交流、会员服务、活动组织与跨校合作等工作，致力于推动中国计算机学会（CCF）优质资源进入校园，服务学生专业成长、科研训练与职业发展。
-        </p>
-        <p>
-          分会坚持“学会赋能、学院指导、学生主导”的建设思路，围绕学生成长需求组织高质量活动，推动学生在学术交流、科研实践、竞赛认证、组织协作与跨校交流中获得持续成长。
-        </p>
+  <!-- ==================== About ==================== -->
+  <section id="about">
+    <div class="section-inner">
+      <h2 class="section-title">关于分会</h2>
+      <p class="section-desc">了解 CCF 四川大学学生分会的发展历程与组织概况</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            CCF 四川大学学生分会是中国计算机学会（CCF）在四川大学设立的学生组织，面向全校计算机相关专业学生开展学术交流、会员服务、活动组织与跨校合作等工作，致力于推动 CCF 优质资源进入校园，服务学生专业成长、科研训练与职业发展。
+          </p>
+          <p>
+            分会坚持"学会赋能、学院指导、学生主导"的建设思路，实行本科生与研究生"本研分工、协作互通"的管理模式。围绕学生成长需求，常态化组织 CCF 走进高校（名师讲座）、CSP/CCSP/CACC 等赛事认证、走进企业参访、对话菁英经验分享等系列活动。
+          </p>
+          <p>
+            分会曾多次获评 CCF 年度优秀学生分会，是四川大学计算机相关专业学生学术实践与组织能力培养的重要平台。
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat-card"><div class="num">2012</div><div class="label">成立年份</div></div>
+          <div class="stat-card"><div class="num">12+</div><div class="label">届执委团队</div></div>
+          <div class="stat-card"><div class="num">26</div><div class="label">现任执委</div></div>
+          <div class="stat-card"><div class="num">20+</div><div class="label">年度活动场次</div></div>
+        </div>
       </div>
-    </section>
 
-    <section id="activities">
-      <h2>活动方向</h2>
-      <div class="grid">
+      <!-- Honors -->
+      <div class="honors">
+        <h3><span style="font-size:24px;">&#127942;</span> 社团荣誉</h3>
+        <div class="honor-list">
+          <div class="honor-item">
+            <span class="honor-icon">&#127942;</span>
+            <div class="honor-info">
+              <div class="honor-name">CCF 年度优秀学生分会</div>
+              <div class="honor-year">多次获评</div>
+            </div>
+          </div>
+          <div class="honor-item">
+            <span class="honor-icon">&#127942;</span>
+            <div class="honor-info">
+              <div class="honor-name">CCF CSP 认证优秀组织单位</div>
+              <div class="honor-year">多次获评</div>
+            </div>
+          </div>
+          <div class="honor-item">
+            <span class="honor-icon">&#127942;</span>
+            <div class="honor-info">
+              <div class="honor-name">四川大学"十佳"学生集体</div>
+              <div class="honor-year">2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Activity Directions ==================== -->
+  <section id="activities">
+    <div class="section-inner">
+      <h2 class="section-title">活动方向</h2>
+      <p class="section-desc">四大方向，覆盖学术前沿、竞赛认证、企业实践与朋辈成长</p>
+      <div class="card-grid">
         <div class="card">
+          <div class="card-icon">&#128218;</div>
           <h3>学术交流</h3>
-          <p>邀请学术界与产业界嘉宾开展讲座、报告与交流，帮助学生了解计算机领域前沿问题与发展趋势。</p>
+          <p>CCF 走进高校系列名师讲座、CCF SPP 领航计划，邀请学术界与产业界专家学者来校交流，拓展学术视野。</p>
         </div>
         <div class="card">
-          <h3>学生领航</h3>
-          <p>围绕科研入门、学习规划、升学就业、竞赛认证等主题，组织面向学生会员的成长支持活动。</p>
+          <div class="card-icon">&#127919;</div>
+          <h3>竞赛认证</h3>
+          <p>组织 CSP 认证、CCSP 竞赛、CACC 算法能力大赛及中国计算机应用技术大赛的校内报名、培训与备赛支持。</p>
         </div>
         <div class="card">
-          <h3>校际联建</h3>
-          <p>与兄弟高校学生分会开展交流互访，分享活动经验、组织机制与学生分会建设路径。</p>
+          <div class="card-icon">&#127970;</div>
+          <h3>实践参访</h3>
+          <p>组织走进腾讯、中电科等企业参访，搭建校企交流桥梁，帮助同学了解产业一线技术动态与用人需求。</p>
         </div>
         <div class="card">
-          <h3>会员服务</h3>
-          <p>推动 CCF 会员资源、会议资源、认证资源与校园学生需求对接，提升学生会员的参与感与获得感。</p>
+          <div class="card-icon">&#127793;</div>
+          <h3>朋辈领航</h3>
+          <p>对话菁英经验分享会、期末学业备考辅导、科研入门指导、保研/考研/留学经验交流，先强带动后强。</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="news">
-      <h2>最新动态</h2>
-      <div class="news-list">
-        <div class="news-item">
-          <span class="date">2026-05-24</span>
-          CCF 四川大学学生分会与西北工业大学学生分会开展联建交流活动
+  <!-- ==================== Events Timeline ==================== -->
+  <section id="events">
+    <div class="section-inner">
+      <h2 class="section-title">活动开展</h2>
+      <p class="section-desc">按时间记录分会举办的各类学术讲座、竞赛认证、企业参访及内部建设活动</p>
+
+      <div class="timeline">
+        <!-- 2026 -->
+        <div class="tl-year current">
+          <div class="tl-year-title">2026 年</div>
+          <div class="tl-items">
+            <div class="tl-item"><span class="tl-date">01-05</span><span class="tl-title">CCF 四川大学学生分会新闻稿整理报送</span></div>
+            <div class="tl-item"><span class="tl-date">01-22</span><span class="tl-title">学期工作总结会</span></div>
+            <div class="tl-item"><span class="tl-date">02-01 至 03-01</span><span class="tl-title">CSP 寒假集训</span><span class="tl-summary">寒假算法刷题打卡与线上答疑</span></div>
+            <div class="tl-item"><span class="tl-date">03-17</span><span class="tl-title">分会换届大会</span></div>
+            <div class="tl-item"><span class="tl-date">03-21</span><span class="tl-title">潘天逸讲团课</span></div>
+            <div class="tl-item"><span class="tl-date">03-25</span><span class="tl-title">SPP 第 166 期 · 郭睿明</span><span class="tl-summary">CCF SPP 领航计划线上直播</span></div>
+            <div class="tl-item"><span class="tl-date">03-27</span><span class="tl-title">执委团建 · 龙虾局</span></div>
+            <div class="tl-item"><span class="tl-date">03-30</span><span class="tl-title">学期活动计划讨论</span></div>
+            <div class="tl-item"><span class="tl-date">03-30</span><span class="tl-title">研究生执委例会</span></div>
+            <div class="tl-item"><span class="tl-date">04-10</span><span class="tl-title">CSP 考后复盘经验分享会</span></div>
+            <div class="tl-item"><span class="tl-date">04-21</span><span class="tl-title">企业行 · 腾讯</span><span class="tl-summary">走进腾讯成都总部参访交流</span></div>
+            <div class="tl-item"><span class="tl-date">04-25</span><span class="tl-title">全员满绩 · 期中数学备考辅导</span></div>
+            <div class="tl-item"><span class="tl-date">04-27</span><span class="tl-title">对话菁英 · 论文写作经验分享</span></div>
+            <div class="tl-item"><span class="tl-date">05-20</span><span class="tl-title">企业行 · 中电科三十所</span><span class="tl-summary">走进中国电子科技集团第三十研究所</span></div>
+            <div class="tl-item"><span class="tl-date">05-22</span><span class="tl-title">绵阳 YEF 2026 参会</span><span class="tl-summary">参加 CCF 青年精英大会</span></div>
+            <div class="tl-item"><span class="tl-date">05-24</span><span class="tl-title">CCF 走进川大 · 刘知远教授</span></div>
+            <div class="tl-item"><span class="tl-date">05-24</span><span class="tl-title">川大 & 西北工大分会联建交流</span></div>
+            <div class="tl-item"><span class="tl-date">05-29</span><span class="tl-title">本科会长换届</span></div>
+            <div class="tl-item"><span class="tl-date">05-30</span><span class="tl-title">会员表彰暨本科生执委换届</span></div>
+            <div class="tl-item"><span class="tl-date">06-07</span><span class="tl-title">全员满绩 · 软件工程导论备考辅导</span></div>
+            <div class="tl-item"><span class="tl-date">07-08</span><span class="tl-title">川大 & 电科 CSP 线上联合集训</span></div>
+          </div>
         </div>
-        <div class="news-item">
-          <span class="date">2026-XX-XX</span>
-          CCF 走进川大：从 DeepSeek 看大模型技术演进
+
+        <!-- 2025 activities -->
+        <div class="tl-toggle">
+          <button class="tl-toggle-btn" id="toggle2025" onclick="toggleOld(this, 'old2025')">
+            <span class="arrow">&#9654;</span> 2025 年活动
+          </button>
         </div>
-        <div class="news-item">
-          <span class="date">2026-XX-XX</span>
-          CCF 学生领航计划系列活动持续开展
+        <div class="tl-old" id="old2025">
+          <div class="tl-year">
+            <div class="tl-year-title">2025 年</div>
+            <div class="tl-items">
+              <div class="tl-item"><span class="tl-date">09-11</span><span class="tl-title">研究生招生宣讲</span></div>
+              <div class="tl-item"><span class="tl-date">10-12</span><span class="tl-title">算法小组宣讲</span></div>
+              <div class="tl-item"><span class="tl-date">10-26</span><span class="tl-title">CCF 走进高校 · 王烨</span></div>
+              <div class="tl-item"><span class="tl-date">11-01</span><span class="tl-title">LMG 2025</span></div>
+              <div class="tl-item"><span class="tl-date">11-04</span><span class="tl-title">骨干例会</span></div>
+              <div class="tl-item"><span class="tl-date">11-10</span><span class="tl-title">对话菁英经验分享</span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="join">
-      <h2>加入我们</h2>
-      <div class="intro">
-        <p>
-          欢迎四川大学计算机相关专业学生关注并参与 CCF 四川大学学生分会活动。你可以通过参与讲座、加入学生会员、参与志愿服务、申请执委会工作等方式加入分会建设。
-        </p>
-        <p>
-          后续本页面将更新分会交流群、活动报名方式、公众号入口与联系方式。
-        </p>
+  <!-- ==================== Team ==================== -->
+  <section id="team">
+    <div class="section-inner">
+      <h2 class="section-title">执委团队</h2>
+      <p class="section-desc">本届执委与历届执委时间线</p>
+
+      <!-- Current Team -->
+      <div class="team-section">
+        <h3><span style="font-size:22px;">&#128101;</span> 本届执委</h3>
+        <div class="team-grid">
+          <!-- 指导老师：张婷婷 -->
+          <div class="member-card">
+            <div class="member-avatar"><img src="images/scu-logo.png" alt="" /></div>
+            <div class="member-name">张婷婷</div>
+            <div class="member-role">指导老师</div>
+          </div>
+          <!-- 主席团 -->
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">孙伟</div>
+            <div class="member-role">主席</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">邵海洋</div>
+            <div class="member-role">副主席</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">袁俊炫</div>
+            <div class="member-role">副主席</div>
+          </div>
+          <!-- 执委 -->
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">贤冠萌</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">李文婷</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">刘致远</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">王多多</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">吴彦良</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">廖嘉城</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">纪宇轩</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">赖葳</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">陈治杰</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">谢蕊谦</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">薛耀森</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">王睿</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">张良益</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">杨谨源</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">侯俊宇</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">范博洋</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">唐菲悦</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">鱼浩琳</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">周陈睿</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">成芷雯</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">温倬源</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">姚凯馨</div>
+            <div class="member-role">执委</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">&#128100;</div>
+            <div class="member-name">曹紫菲</div>
+            <div class="member-role">执委</div>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
 
+      <!-- Historical Team Timeline -->
+      <div class="team-section">
+        <h3><span style="font-size:22px;">&#128218;</span> 历届执委</h3>
+        <div class="timeline timeline-team">
+          <div class="tl-year">
+            <div class="tl-year-title">第十二届（2023–2024）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">李希垚</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第十一届（2022–2023）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">田成滨</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第十届（2021–2022）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">陈玮彤</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第九届（2020–2021）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">明章强</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第八届（2019–2020）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">黄苗</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第七届（2018–2019）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">刘晨静</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第六届（2017–2018）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">李晓伟</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">管恒、居建涛</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第五届（2016–2017）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">李潇瑶</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">王泽荣、黎婷婷、钟佳奇</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第四届（2015–2016）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">高婉玲</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">晏力、盛小东、张舒</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第三届（2014–2015）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">贺庆来</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">李夷洁、李钟麒、邹宽、李云赫</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第二届（2013–2014）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">张甜瑾</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">高慧、马宇驰、赵文</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-year">
+            <div class="tl-year-title">第一届（2012–2013）</div>
+            <div class="tl-items">
+              <div class="tl-item">
+                <div class="tl-team-names">
+                  <span class="role-group"><span class="role-label">主席：</span><span class="role-names">张永清</span></span>
+                  <span class="role-group"><span class="role-label">副主席：</span><span class="role-names">张甜瑾、聂章艳、郭慧盈</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Join ==================== -->
+  <section id="join">
+    <div class="section-inner">
+      <h2 class="section-title">加入我们</h2>
+      <p class="section-desc">欢迎四川大学计算机相关专业学生关注并参与 CCF 川大分会活动</p>
+      <div class="join-content">
+        <div class="join-card">
+          <span class="join-icon">&#128172;</span>
+          <div>
+            <h3>CCF 会员迎新群</h3>
+            <div class="join-detail">1033172661</div>
+            <div class="join-note">QQ 群 · 获取活动通知与 CCF 会员资讯</div>
+          </div>
+        </div>
+        <div class="join-card recruit">
+          <span class="join-icon">&#128170;</span>
+          <div>
+            <h3>执委招募</h3>
+            <p>每学年秋季学期面向全校招募本科生及研究生执委，欢迎有服务热情、责任心强的同学加入执委团队，参与活动策划与组织。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
   <footer>
-    © 2026 CCF 四川大学学生分会｜Powered by GitHub Pages
+    <div class="footer-inner">
+      <div class="footer-org">CCF 四川大学学生分会</div>
+      <div class="footer-affil">中国计算机学会 · 四川大学</div>
+      <div class="footer-text">
+        &copy; 2026 CCF 四川大学学生分会 &nbsp;|&nbsp;
+        托管于 <a href="https://github.com/ccfscu/ccfscu.github.io" target="_blank" rel="noopener">GitHub Pages</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- ==================== Scripts ==================== -->
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
+
+    // Toggle old year events
+    function toggleOld(btn, id) {
+      const target = document.getElementById(id);
+      const isOpen = target.classList.contains('show');
+      target.classList.toggle('show');
+      btn.classList.toggle('open');
+      btn.querySelector('.arrow').innerHTML = isOpen ? '&#9654;' : '&#9660;';
+    }
+  </script>
 </body>
 </html>
